@@ -185,8 +185,8 @@ class Pathfinder {
     }
   }
     
-  void display(PGraphics p) {
-    network.display(p);
+  void display() {
+    network.display();
   }
     
 }
@@ -306,18 +306,16 @@ class Graph {
     return dist;
   }
   
-  void display(PGraphics p) {
-    
-    p.beginDraw();
+  void display() {
     
     // Formatting
-    p.noFill();
-    p.stroke(abs(textColor-200));
-    p.strokeWeight(1);
+    noFill();
+    stroke(abs(textColor-200));
+    strokeWeight(1);
     
     // Draws Tangent Circles Centered at pathfinding nodes
     for (int i=0; i<nodes.size(); i++) {
-      p.ellipse(nodes.get(i).node.x, nodes.get(i).node.y, SCALE, SCALE);
+      ellipse(nodes.get(i).node.x, nodes.get(i).node.y, SCALE, SCALE);
     }
     
     // Draws Edges that Connect Nodes
@@ -326,10 +324,9 @@ class Graph {
       for (int j=0; j<nodes.get(i).neighbors.size(); j++) {
         neighbor = nodes.get(i).neighbors.get(j);
         //println(neighbor);
-        p.line(nodes.get(i).node.x, nodes.get(i).node.y, nodes.get(neighbor).node.x, nodes.get(neighbor).node.y);
+        line(nodes.get(i).node.x, nodes.get(i).node.y, nodes.get(neighbor).node.x, nodes.get(neighbor).node.y);
       }
     }
-    p.endDraw();
   }
   
 }

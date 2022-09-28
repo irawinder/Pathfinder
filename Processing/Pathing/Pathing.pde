@@ -7,22 +7,16 @@ ObstacleCourse container = new ObstacleCourse();
 boolean redraw = true;
 
 void setup() {
-  tableCanvas = createGraphics(1000, 500);
-  size(tableCanvas.width, tableCanvas.height);
-  
-  initPathfinder(tableCanvas, 20);
+  size(1000, 500);
+  initPathfinder(20);
 }
 
 void draw() {
   
   if (redraw) {
-    tableCanvas.beginDraw();
-    tableCanvas.background(background);
-    tableCanvas.endDraw();
+    background(background);
     
-    drawPathfinder(tableCanvas);
-    
-    image(tableCanvas, 0, 0);
+    drawPathfinder();
     
     redraw = false;
   }

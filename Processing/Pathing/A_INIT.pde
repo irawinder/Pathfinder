@@ -7,24 +7,24 @@ Pathfinder finderTest;
 PVector A, B;
 ArrayList<PVector> testPath, testVisited;
 
-void initPathfinder(PGraphics p, int res) {
-  finderTopo = new Pathfinder(p.width, p.height, res, boundaries);
-  finderMargin = new Pathfinder(p.width, p.height, res, container);
+void initPathfinder(int res) {
+  finderTopo = new Pathfinder(width, height, res, boundaries);
+  finderMargin = new Pathfinder(width, height, res, container);
   
-  initOD(p);
-  initNetwork(p, 10, 0.55);
+  initOD();
+  initNetwork(10, 0.55);
   initPath(finderTest, A, B);
   
   // Ensures that a valid path is always initialized upon start
   while (testPath.size() < 2) {
     println("Generating new origin-destination pair ...");
-    initOD(p);
+    initOD();
     initPath(finderTest, A, B);
   }
 }
 
-void initNetwork(PGraphics p, int res, float cullRatio) {
-  finderTest = new Pathfinder(p.width, p.height, res, cullRatio);
+void initNetwork(int res, float cullRatio) {
+  finderTest = new Pathfinder(width, height, res, cullRatio);
 }
 
 void initPath(Pathfinder finder, PVector A, PVector B) {
@@ -32,7 +32,7 @@ void initPath(Pathfinder finder, PVector A, PVector B) {
   testVisited = finder.getVisited();
 }
 
-void initOD(PGraphics p) {
-  A = new PVector(random(1.0)*p.width, random(1.0)*p.height);
-  B = new PVector(random(1.0)*p.width, random(1.0)*p.height);
+void initOD() {
+  A = new PVector(random(1.0)*width, random(1.0)*height);
+  B = new PVector(random(1.0)*width, random(1.0)*height);
 }

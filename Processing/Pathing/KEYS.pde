@@ -1,12 +1,12 @@
 void keyPressed() {
   switch(key) {
     case 'r':
-      initOD(tableCanvas);
+      initOD();
       initPath(finderTest, A, B);
       redraw = true;
       break;
     case 'n':
-      initNetwork(tableCanvas, 10, 0.55);
+      initNetwork(10, 0.55);
       initPath(finderTest, A, B);
       redraw = true;
       break;
